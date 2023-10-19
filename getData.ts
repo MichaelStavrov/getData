@@ -10,7 +10,7 @@ const COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments';
 
 const getData = async (url: string): Promise<Post[]> => {
   const resp = await fetch(url);
-  const data = resp.json();
+  const data = await resp.json();
 
   return data;
 };
