@@ -8,14 +8,14 @@ interface Post {
 
 const COMMENTS_URL = 'https://jsonplaceholder.typicode.com/comments';
 
-const getData = async (url: string): Promise<Post[]> => {
+const getData = async <T>(url: string): Promise<T> => {
   const resp = await fetch(url);
   const data = await resp.json();
 
   return data;
 };
 
-getData(COMMENTS_URL).then((posts) => {
+getData<Post[]>(COMMENTS_URL).then((posts) => {
   posts.forEach((post) => {
     console.log(`ID: ${post.id}, Email: ${post.email}`);
   });
